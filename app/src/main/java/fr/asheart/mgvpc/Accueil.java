@@ -1,10 +1,13 @@
 package fr.asheart.mgvpc;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,8 +16,8 @@ import java.io.IOException;
 
 public class Accueil extends AppCompatActivity {
 
-    private LienApi     LA  = new LienApi();
-    public  String      mdp = "";
+    private LienApi LA  = new LienApi();
+    private String  mdp = "";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,12 +32,21 @@ public class Accueil extends AppCompatActivity {
         String btnPush = view.getTag().toString();
         this.mdp += btnPush;
 
+        TextView mdpZone = findViewById(R.id.mdpZone);
+                 mdpZone.setText(this.mdp);
+
         try {
             String urlTrous = "connexionApp.php?key=%s";
             String url      = String.format(urlTrous, this.mdp);
             JSONArray jo    = LA.toApiRequest(url);
 
-            Log.e("YOUSK2 MDP", jo+"");
+            boolean go      = jo.getBoolean(0);
+
+            if (go) {
+                Intent intent = new Intent(this, Main.class);
+                startActivity(intent);
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
@@ -47,5 +59,7 @@ public class Accueil extends AppCompatActivity {
 
     public  void ClickSuppButton(View view) {
         this.mdp = "";
+        TextView mdpZone = findViewById(R.id.mdpZone);
+                 mdpZone.setText(this.mdp);
     }
 }
