@@ -1,6 +1,7 @@
 package fr.asheart.mgvpc;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,7 @@ public class Accueil extends AppCompatActivity {
     private String  mdp = "";
 
     protected void onCreate(Bundle savedInstanceState) {
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accueil);
 
