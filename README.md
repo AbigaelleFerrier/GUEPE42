@@ -5,4 +5,4 @@ Code Source de API : https://github.com/Wendeline/ApiMGVPCv2
 
 Code Source de SiteWeb :  https://github.com/Wendeline/MGVPC_codeIgniter
 
-#### Téléchargé l'APK : https://github.com/MGVPC_API
+#### Téléchargé l'APK : https://github.com/MGVPC_APK
